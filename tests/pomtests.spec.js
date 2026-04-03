@@ -1,4 +1,4 @@
-import {test, epect} from '@playwright/test';
+import {test, expect} from '@playwright/test';
 import PomManager from '../pages/PomManager';
 
 
