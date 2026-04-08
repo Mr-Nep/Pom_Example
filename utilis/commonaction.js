@@ -3,7 +3,7 @@ export default class CommonAction {
         this.page = page;
     }
 
-    async navigateTo(url) {
+    async navigate(url) {
         await this.page.pause()
         await this.page.goto(url)
     }
@@ -18,5 +18,8 @@ export default class CommonAction {
     }
     async isChecked(selector) {
         return await this.page.isChecked(selector)  
+    }
+    async isNotChecked(selector) {
+        return !(await this.page.isChecked(selector))
     }
 }

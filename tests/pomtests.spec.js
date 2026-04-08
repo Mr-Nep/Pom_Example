@@ -33,7 +33,7 @@ test.describe('Login Tests', () => {
 })
 
 
-test.describe.only('Checkbox Verification', () => {
+test.describe('Checkbox Verification', () => {
     test.beforeEach(async ({page}) => {
         pm = new PomManager(page)
     })
@@ -42,12 +42,17 @@ test.describe.only('Checkbox Verification', () => {
         await page.close()
     })
 
-    test('Check and uncheck checkboxes', async ({page}) => {
+    test.only('Check and uncheck checkboxes', async ({page}) => {
         await pm.CheckboxesPage.navigate()
-
         // check the first checkbox
         await pm.CheckboxesPage.checkCheckbox(1)
         await pm.CheckboxesPage.assertCheckbox(1, true)
+
+        // uncheck the second checkbox
+        await pm.CheckboxesPage.navigate()
+        await pm.CheckboxesPage.checkCheckbox(3)
+        await pm.CheckboxesPage.assertCheckboxUnchecked(3, false)
+        
     })
 
 })
